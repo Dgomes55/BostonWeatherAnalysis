@@ -14,5 +14,4 @@ pres AS sea_pressure #The average sea-level air pressure in hectopascals, as a f
 FROM boston_weather_data
 
 WHERE MONTH(time) IN (12,1,2)
-
-GROUP BY AVG(tavg)
+AND YEAR(time) = 2022
