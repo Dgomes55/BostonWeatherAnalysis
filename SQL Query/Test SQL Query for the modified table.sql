@@ -19,4 +19,5 @@ sap AS sea_pressure #The average sea-level air pressure in hectopascals, as a fl
 
 FROM test_weather
 
-WHERE YEAR(wdate) = 2014
+WHERE MONTH(wdate) IN (12,1,2)
+AND YEAR(wdate) IN (2020,2021,2022)
