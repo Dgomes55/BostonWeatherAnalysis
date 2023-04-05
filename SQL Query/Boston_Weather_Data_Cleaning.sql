@@ -29,5 +29,7 @@ TRIM(pres) AS sea_pressure #The average sea-level air pressure in hectopascals, 
 
 FROM boston_weather_data
 
-WHERE MONTH(wdate) IN (12,1,2)
-AND YEAR(wdate) IN (2014,2015,2016,2017,2018,2019,2020,2021,2022)
+#https://www.timeanddate.com/calendar/aboutseasons.html
+#We need to show information from all months to ensure that we can analyze all seasons
+#SPRING IS 3 to 5, SUMMER IS 6 to 8, FALL is 9 to 11, WINTER is 12 to 2
+WHERE YEAR(wdate) IN (2014,2015,2016,2017,2018,2019,2020,2021,2022)
