@@ -13,15 +13,19 @@ DAY(wdate) as day_test, # This seperates the day from the full date
 TRIM(FORMAT(((tavg * 9/5) + 32), 2)) AS temp_average, #The average air temperature in fahrenheit
 TRIM(FORMAT(((tmin * 9/5) + 32), 2)) AS temp_min, #The minimum air temperature in fahrenheit
 TRIM(FORMAT(((tmax * 9/5) + 32), 2)) AS temp_max, # The maximum air temperature in fahrenheit
-FORMAT(((tmax + tmin) / 2), 3)AS test_temp_avg, # Might beable to cast this as a decimal want to see the descrepetency (data maybe wrong)????
+FORMAT(((((tmax * 9/5) + 32) + ((tmin * 9/5) + 32)) / 2), 2)AS temp_avg_min_max, # Might be useful not really sure yet (do more research before using these numbers in analysis.
 #End of Temp
 
 TRIM(prcp) AS precipitation, #The daily precipitation total in millimeters, as a float
 TRIM(wdir) AS wind_direction, #The average wind direction in degrees, as a float
 TRIM(wspd) AS wind_speed, #The average wind speed in kilometers per hour, as a float
-TRIM(pres) AS sea_pressure #The average sea-level air pressure in hectopascals, as a float2
+TRIM(pres) AS sea_pressure, #The average sea-level air pressure in hectopascals, as a float2
+
+IF(wdir BETWEEN 330 AND 340, 'N/NW', wdir);
+ELSEIF(wdir BETWEEN 310 AND 320, 'NW', wdir)
+    
 
 FROM boston_weather_data
 
 WHERE MONTH(wdate) IN (12,1,2)
-AND YEAR(wdate) IN (2020,2021,2022)
+AND YEAR(wdate) IN (2014,2015,2016,2017,2018,2019,2020,2021,2022)
